@@ -8,6 +8,10 @@ jobs:
     coverage:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3     
-            - run: yarn install
-            - uses: ArtiomTr/jest-coverage-report-action@v2
+          - uses: actions/checkout@v3     
+          - run: yarn install
+          - run: yarn test:coverage             
+          
+          - uses: mattallty/jest-github-action@v1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
